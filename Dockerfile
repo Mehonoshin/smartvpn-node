@@ -1,4 +1,4 @@
-FROM ruby:2.1
+FROM ruby:2.3.4
 MAINTAINER Stanislav Mekhonoshin <ejabberd@gmail.com>
 
 RUN apt-get -y update
