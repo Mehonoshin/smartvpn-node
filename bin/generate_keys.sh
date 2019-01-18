@@ -8,6 +8,8 @@
 
 if [ -d /hooks/pki ]
 then
+	echo "PKI already exists"
+else
 	make-cadir /hooks/pki
 	echo "export KEY_NAME=\"EasyRSA\"" >> /hooks/pki/vars
 	cd /hooks/pki

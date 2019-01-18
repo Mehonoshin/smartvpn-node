@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# TODO:
-# copy keys into image
 /hooks/bin/generate_keys.sh
-openvpn --config /etc/openvpn/server.conf
+/hooks/bin/make_dev_tun.sh
+
 #smartvpn activate
+
+openvpn --config /etc/openvpn/server.conf
 
