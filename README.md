@@ -7,3 +7,9 @@ VPN node configuration that integrates to [smartvpn-billing](https://github.com/
 ## Installation
 
 TBD
+
+## How to run
+
+```
+docker run --cap-add=NET_ADMIN mexx/smartvpn-node
+```
