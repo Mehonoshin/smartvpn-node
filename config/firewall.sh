@@ -17,12 +17,16 @@ iptables -P INPUT ACCEPT
 iptables -P FORWARD ACCEPT
 iptables -P OUTPUT ACCEPT
 
+default_interface = "$(route | grep '^default' | grep -o '[^ ]*$')"
+
 # Set up iptables NAT rules as needed.
 # Regular openvpn
-/sbin/iptables -t nat -A POSTROUTING -s 10.77.2.0/255.255.255.0 -o <%= node["network"]["default_interface"] %> -j MASQUERADE
+
+/sbin/iptables -t nat -A POSTROUTING -s 10.77.2.0/255.255.255.0 -o $default_interface -j MASQUERADE
 
 # I2P
-/sbin/iptables -t nat -A PREROUTING -d <%= `echo -n $(ifconfig tun0 | grep 'inet addr:' | grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1 }')` %> -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 8118
+d = "$(ifconfig tun0 | grep 'inet addr:' | grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1 }')"
+/sbin/iptables -t nat -A PREROUTING -d d -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 8118
 /sbin/iptables -t nat -A PREROUTING -p udp -m udp --dport 1194 -j REDIRECT --to-ports 443
 /sbin/iptables -A INPUT -p tcp -m tcp --dport 8118 -j DROP
 
