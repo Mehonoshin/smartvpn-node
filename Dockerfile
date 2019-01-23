@@ -3,7 +3,7 @@ MAINTAINER Stanislav Mekhonoshin <ejabberd@gmail.com>
 
 RUN apt-get -y update
 RUN apt-get -y install openvpn iptables vim
-RUN gem install smartvpn-http-hooks -v '1.0.8'
+RUN gem install smartvpn-http-hooks -v '1.0.9'
 
 WORKDIR /hooks
 COPY ./ .
