@@ -10,7 +10,6 @@ COPY ./ .
 COPY ./config/openvpn.conf /etc/openvpn/server.conf
 COPY ./config/firewall.sh /etc/openvpn/server.up.sh
 
-VOLUME ["/hooks/pki"]
 VOLUME ["/etc/openvpn"]
 
 ENTRYPOINT ["/hooks/entrypoint.sh"]
