@@ -3,8 +3,8 @@
 # This script will be run by OpenVPN on startup via the 'up' configuration
 # directive in /etc/openvpn/server.conf.
 #
-# Turn on IP forwarding
-echo "1" > /proc/sys/net/ipv4/ip_forward
+
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 
 # Clear rules
 iptables -F
