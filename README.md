@@ -11,5 +11,5 @@ TBD
 ## How to run
 
 ```
-docker run --cap-add=NET_ADMIN mexx/smartvpn-node
+docker run -e SECRET_TOKEN='123' -e API_HOST='157.230.105.228' -e HOSTNAME='VPN' --cap-add=NET_ADMIN mexx/smartvpn-node:latest
 ```
