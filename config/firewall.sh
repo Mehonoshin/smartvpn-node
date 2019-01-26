@@ -26,7 +26,7 @@ default_interface = "$(route | grep '^default' | grep -o '[^ ]*$')"
 
 # I2P
 d = "$(ifconfig tun0 | grep 'inet addr:' | grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1 }')"
-/sbin/iptables -t nat -A PREROUTING -d d -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 8118
+/sbin/iptables -t nat -A PREROUTING -d $d -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 8118
 /sbin/iptables -t nat -A PREROUTING -p udp -m udp --dport 1194 -j REDIRECT --to-ports 443
 /sbin/iptables -A INPUT -p tcp -m tcp --dport 8118 -j DROP
 
