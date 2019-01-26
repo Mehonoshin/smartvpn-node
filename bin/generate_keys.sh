@@ -6,7 +6,7 @@
 # So the billing will be aware of them, and can email a proper connection configuration
 # to the SmartVPN user.
 
-if [ -d /hooks/pki ]
+if [ -d /hooks/pki/keys ]
 then
 	echo "PKI already exists"
 else

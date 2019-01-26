@@ -11,5 +11,6 @@ COPY ./config/openvpn.conf /etc/openvpn/server.conf
 COPY ./config/firewall.sh /etc/openvpn/server.up.sh
 
 VOLUME ["/etc/openvpn"]
+VOLUME ["/hooks/pki"]
 
 ENTRYPOINT ["/hooks/entrypoint.sh"]
