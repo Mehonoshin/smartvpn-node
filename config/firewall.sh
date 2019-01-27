@@ -17,12 +17,10 @@ iptables -P INPUT ACCEPT
 iptables -P FORWARD ACCEPT
 iptables -P OUTPUT ACCEPT
 
-default_interface = "$(route | grep '^default' | grep -o '[^ ]*$')"
-
 # Set up iptables NAT rules as needed.
 # Regular openvpn
 
-/sbin/iptables -t nat -A POSTROUTING -s 10.77.2.0/255.255.255.0 -o $default_interface -j MASQUERADE
+/sbin/iptables -t nat -A POSTROUTING -s 10.77.2.0/255.255.255.0 -o eth0 -j MASQUERADE
 
 # I2P
 d = "$(ifconfig tun0 | grep 'inet addr:' | grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1 }')"
