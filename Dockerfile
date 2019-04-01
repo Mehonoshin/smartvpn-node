@@ -5,6 +5,8 @@ RUN apt-get -y update
 RUN apt-get -y install openvpn iptables vim nmap net-tools
 RUN gem install smartvpn-http-hooks -v '1.0.9'
 
+ENV HOOKS_PATH /hooks
+
 WORKDIR /hooks
 COPY ./ .
 COPY ./config/openvpn.conf /etc/openvpn/server.conf

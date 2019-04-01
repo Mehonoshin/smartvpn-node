@@ -6,13 +6,13 @@
 # So the billing will be aware of them, and can email a proper connection configuration
 # to the SmartVPN user.
 
-if [ -f /hooks/pki/keys/ca.crt ]
+if [ -f $HOOKS_PATH/pki/keys/ca.crt ]
 then
 	echo "PKI already exists"
 else
-	make-cadir /hooks/pki
-	echo "export KEY_NAME=\"EasyRSA\"" >> /hooks/pki/vars
-	cd /hooks/pki
+	make-cadir $HOOKS_PATH/pki
+	echo "export KEY_NAME=\"EasyRSA\"" >> $HOOKS_PATH/pki/vars
+	cd $HOOKS_PATH/pki
 
 	ls -al
 	source ./vars
