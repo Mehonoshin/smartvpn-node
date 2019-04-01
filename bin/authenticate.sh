@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./bin/load_env.sh
+$HOOKS_PATH/bin/load_env.sh
 smartvpn-authenticate $1
